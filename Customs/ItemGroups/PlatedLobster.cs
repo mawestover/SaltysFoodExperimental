@@ -5,11 +5,12 @@ using KitchenLib.Customs;
 using KitchenLib.References;
 using KitchenLib.Utils;
 using SaltyFood.Customs.Items;
+using SaltysFood.Customs.ItemGroups;
 using UnityEngine;
 
 namespace SaltyFood.Customs.ItemGroups
 {
-    public class PlatedLobster : CustomItemGroup<ItemGroupView>
+    internal class PlatedLobster : CustomItemGroup<ItemGroupView>
     {
         // UniqueNameID - This is used internally to generate the ID of this GDO. Once you've set it, don't change it.
         public override string UniqueNameID => "PlatedLobster";
@@ -60,5 +61,7 @@ namespace SaltyFood.Customs.ItemGroups
                 Max = 1
             }
         };
+
+
     }
 }

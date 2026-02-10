@@ -10,6 +10,9 @@ using SaltyFood.Customs.ItemGroups;
 using SaltyFood.Customs.Items;
 using UnityEngine;
 using KitchenLogger = KitchenLib.Logging.KitchenLogger;
+using System;
+using System.Timers;
+using Kitchen;
 
 namespace SaltyFood
 {
@@ -33,10 +36,10 @@ namespace SaltyFood
          */
         public const string MOD_GUID = "com.saltyflea.saltysfood";
         public const string MOD_NAME = "SaltysFood";
-        public const string MOD_VERSION = "0.1.6";
+        public const string MOD_VERSION = "0.1.15"; 
         public const string MOD_AUTHOR = "SaltyFlea";
         public const string MOD_GAMEVERSION = ">=1.3.0";
-
+        private static Timer DebugNotification = new Timer(60000*5);
         /*
          * These are static variables that will be used throughout your mod.
          *
@@ -45,7 +48,7 @@ namespace SaltyFood
          */
         internal static AssetBundle Bundle;
         internal static KitchenLogger Logger;
-
+      
         /*
          * This is the constructor for your mod. This is where you will set the GUID, NAME, VERSION, AUTHOR, and GAMEVERSION for your mod.
          */
@@ -60,6 +63,19 @@ namespace SaltyFood
             var mats = Bundle.LoadAllAssets<Material>();
             foreach (var mat in mats) { KitchenLib.Customs.CustomMaterials.AddMaterial(mat.name, mat); }
             Logger.LogInfo($"Custom materials loaded:{mats.Length}");
+            //foreach (Material mat in KitchenLib.Utils.MaterialUtils.GetAllMaterials(false))
+            //{
+            //    Logger.LogInfo($"materialname={mat.name}");
+            //}
+#if DEBUG
+            DebugNotification.Elapsed += DebugNotification_Elapsed;
+            DebugNotification.Start();
+#endif
+        }
+
+        private void DebugNotification_Elapsed(object sender, ElapsedEventArgs e)
+        {
+            KitchenLib.UI.GenericPopupManager.CreatePopup(MOD_NAME, "You are using the DEBUG version of the MOD, you cheater!");
         }
 
         /*
@@ -67,6 +83,7 @@ namespace SaltyFood
          */
         protected override void OnUpdate()
         {
+
         }
 
         /*
@@ -109,6 +126,7 @@ namespace SaltyFood
 
             //KitchenLib.Customs.CustomMaterials.AddMaterial("Food_Fresnel", mat);            
             //AddGameDataObject<LobsterRissotoDish>();
+
         }
     }
 }

@@ -15,5 +15,6 @@ namespace SaltyFood.Customs.Items
         // Prefab - This is the GameObject used for this Item's visual. AssignMaterialsByNames() is a helper method that assigns materials to the GameObject based on the names of the materials.
         public override GameObject Prefab => Mod.Bundle.LoadAsset<GameObject>("Cooked Chips").AssignMaterialsByNames();
 
+        public override ItemStorage ItemStorageFlags => ItemStorage.StackableFood;
     }
 }

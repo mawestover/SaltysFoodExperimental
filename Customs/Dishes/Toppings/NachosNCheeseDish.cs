@@ -40,7 +40,9 @@ namespace SaltyFood.Customs.Dishes
 
         // CustomerMultiplier - Determines the customer difference this Unlock provides.
         public override DishCustomerChange CustomerMultiplier => DishCustomerChange.SmallDecrease;
-
+#if DEBUG
+        public override bool IsAvailableAsLobbyOption => true;
+#endif
         // Type - This is used to decide what phase this Dish should be ordered.
         public override DishType Type => DishType.Extra;
 
@@ -70,7 +72,7 @@ namespace SaltyFood.Customs.Dishes
         // Recipe - This is the recipe displayed when unlocking this Dish.
         public override Dictionary<Locale, string> Recipe => new Dictionary<Locale, string>
         {
-            { Locale.English, "Add milk and grated cheese to a pot. Makes 10 servings" }
+            { Locale.English, "Add milk and grated cheese to a pot and cook. Makes 10 servings" }
         };
 
         // InfoList - This is used to assign localisation to this Dish.

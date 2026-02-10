@@ -29,5 +29,17 @@ namespace SaltyFood.Customs.Items
         {
             (Item)GDOUtils.GetExistingGDO(ItemReferences.Pot)
         };
+
+        public override List<Item.ItemProcess> Processes => new List<Item.ItemProcess>
+        {
+            new Item.ItemProcess
+            {
+                Process = (Process)GDOUtils.GetExistingGDO(ProcessReferences.Cook),
+                Duration = 1,
+                IsBad=true,
+                Result = (Item)GDOUtils.GetCustomGameDataObject<BurntPottedLobster>().GameDataObject
+            }
+        };
+
     }
 }

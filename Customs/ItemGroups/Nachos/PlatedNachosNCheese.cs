@@ -19,7 +19,7 @@ namespace SaltyFood.Customs.ItemGroups
         
         // DisposesTo - What this Item turns into when interacted with a bin.
         public override Item DisposesTo => (Item)GDOUtils.GetExistingGDO(ItemReferences.Plate);
-
+        public override Item DirtiesTo => (Item)GDOUtils.GetExistingGDO(ItemReferences.PlateDirty);
         public override ItemValue ItemValue => ItemValue.Medium;
 
         // Sets - Sets are the Items which make up an ItemGroup.
@@ -52,7 +52,11 @@ namespace SaltyFood.Customs.ItemGroups
                 Min = 1,
                 Max = 1
             }
-        };        
-        
+        };
+
+        public override void OnRegister(ItemGroup gameDataObject)
+        {
+            base.OnRegister(gameDataObject);
+        }
     }
 }

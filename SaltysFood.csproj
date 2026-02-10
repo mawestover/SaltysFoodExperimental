@@ -4,6 +4,7 @@
 		<TargetFramework>net472</TargetFramework>
 		<AssemblyName>$(MSBuildProjectName)</AssemblyName>
 		<AssetBundlePath>UnityProject - SaltyFood\content\mod.assets</AssetBundlePath>
+    <LangVersion>9.0</LangVersion>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -14,10 +15,19 @@
 	  <Compile Remove="UnityProject - SaltyFood\**" />
 	  <None Remove="UnityProject - SaltyFood\**" />
 	</ItemGroup>
+	
+	<ItemGroup>
+	  <Compile Remove="Customs\ItemGroups\Nachos\PlatedNachosNCream.cs" />
+	</ItemGroup>
 
 	<ItemGroup>
 		<Folder Condition="Exists('Changelogs')" Include="Changelogs\" />
 		<Folder Condition="Exists('Changelogs\Github')" Include="Changelogs\Github" />
 		<Folder Condition="Exists('Changelogs\Workshop')" Include="Changelogs\Workshop" />
+		<Folder Include="Patches\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Include="Customs\ItemGroups\Nachos\PlatedNachosNCream.cs" />
 	</ItemGroup>
 </Project>
