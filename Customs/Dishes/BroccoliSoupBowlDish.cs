@@ -33,7 +33,7 @@ namespace SaltyFood.Customs.Dishes
         public override DishType Type => DishType.Base;
 
         // Difficulty - This is displayed in the lobby. (0 - 5)
-        public override int Difficulty => 3;
+        public override int Difficulty => 5;
 
         // StartingNameSet - The list of names used to decide the default Restaurant name.
         public override List<string> StartingNameSet => new List<string>
@@ -44,7 +44,10 @@ namespace SaltyFood.Customs.Dishes
             "Wholesome Bowl",
             "What the Pho?",
             "The Soup-er Bowl",
-            "Stew-Pendousod"
+            "Stew-Pendous",
+            "Bowled Over",
+            "Bowling for Soup",
+            "Filled with Love"
         };
 
         // MinimumIngredients - The ingredients required to make this Dish.
