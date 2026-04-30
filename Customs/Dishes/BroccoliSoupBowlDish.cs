@@ -94,7 +94,7 @@ namespace SaltyFood.Customs.Dishes
         // Recipe - This is the recipe displayed when unlocking this Dish.
         public override Dictionary<Locale, string> Recipe => new Dictionary<Locale, string>
         {
-            { Locale.English, "Knead flour to make dough. Place dough in bread mold and bake. Cut out bread crumbs and add a portion of broccoli cheese soup. Plate and serve." }
+            { Locale.English, "Knead flour to make dough. Place dough in bread mold and bake. Portion out bread bowl and portion then out bread crumbs and add a portion of broccoli cheese soup. (Add water and onion to pot. Cook. Add cheese and broccoli. Cook.) Plate and serve." }
         };
 
         // InfoList - This is used to assign localisation to this Dish.
