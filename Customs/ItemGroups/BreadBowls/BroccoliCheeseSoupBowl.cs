@@ -26,7 +26,7 @@ namespace SaltyFood.Customs.ItemGroups
         //public override Item DirtiesTo => (Item)GDOUtils.GetExistingGDO(ItemReferences.PlateDirty);
 
         // ItemValue - This is how much money the earned when serving this Item.
-        //public override ItemValue ItemValue => ItemValue.Medium;
+        public override ItemValue ItemValue => ItemValue.High;
 
         // CanContainSide - When TRUE this ItemGroup can contain a Side Dish.
         //public override bool CanContainSide => true;
