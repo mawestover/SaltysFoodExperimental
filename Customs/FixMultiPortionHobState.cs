@@ -1,16 +1,14 @@
 //this code was made by Copilot to fix the lobster portioning issue. This has not been tested.
-
 using Kitchen;
 using KitchenData;
 using KitchenLib.Utils;
-using SaltyFood.Customs.Items;
 using Unity.Collections;
 using Unity.Entities;
 
 namespace SaltyFood.Customs.Systems
 {
-    // This system runs after cooking finishes and clears stale hob state
-    public class FixLobsterPortioning : GameSystemBase
+    // Fixes the "portion stuck on hob" bug for ALL multi-portion foods
+    public class FixMultiPortionHobState : GameSystemBase
     {
         private EntityQuery HobQuery;
 
@@ -30,7 +28,7 @@ namespace SaltyFood.Customs.Systems
 
             foreach (Entity hob in hobs)
             {
-                // Check if hob finished cooking this frame
+                // Hob must have just finished cooking
                 if (!Require(hob, out CTakesDuration takes) || takes.Remaining > 0f)
                     continue;
 
@@ -38,14 +36,13 @@ namespace SaltyFood.Customs.Systems
                 if (!Require(hob, out CItemHolder holder) || holder.HeldItem == default)
                     continue;
 
-                // Check if the held item is cooked lobster or cooked potted lobster
+                // The held item must be a valid item
                 if (!Require(holder.HeldItem, out CItem item))
                     continue;
 
-                int cookedLobsterID = GDOUtils.GetCustomGameDataObject<CookedLobster>().ID;
-                int cookedPottedLobsterID = GDOUtils.GetCustomGameDataObject<CookedPottedLobster>().ID;
-
-                if (item.ID != cookedLobsterID && item.ID != cookedPottedLobsterID)
+                // Detect ANY multi-portion item:
+                // SplitCount > 0 AND SplitSubItem != null
+                if (item.SplitCount <= 0 || item.SplitSubItem == null)
                     continue;
 
                 // --- FIX: Clear stale hob ownership so portioners don't snap pieces back onto the hob ---
